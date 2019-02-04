@@ -1,0 +1,15 @@
+<h1 class="text-center">Improvements</h1>
+<p class="text-center lead">
+  Template improvements with Async Pipe, NgIfElse, and Template Reference Variables
+</p>
+
+<ng-template #noDinos>
+  <app-loading *ngIf="loading"></app-loading>
+  <app-error *ngIf="error"></app-error>
+</ng-template>
+
+<ng-container *ngIf="dinoList$ | async as dinoList; else noDinos">
+  <app-dino
+    *ngFor="let dino of dinoList"
+    [dino]="dino"></app-dino>
+</ng-container>

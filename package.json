@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "postinstall": "cd client && npm i && cd ../api && npm i",
+    "start": "concurrently 'cd client && ng serve' 'cd api && ./node_modules/.bin/nodemon --watch . server'"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}

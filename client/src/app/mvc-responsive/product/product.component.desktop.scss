@@ -1,0 +1,23 @@
+@import '../../assets/styles/constants';
+
+:host {
+  position: fixed;
+  top: 10vh;
+  right: 10vw;
+  bottom: 10vh;
+  left: 10vw;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+img {
+  width: 25%;
+  float: left;
+  margin: 0 30px 30px 0;
+}
+
+:host ::ng-deep .mat-tab-label {
+  text-transform: uppercase;
+}

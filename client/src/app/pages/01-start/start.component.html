@@ -1,0 +1,11 @@
+<h1 class="text-center">Classic</h1>
+<p class="text-center lead">
+  Array of objects retrieved from an API with subscription, OnInit, and OnDestroy.
+</p>
+
+<app-loading *ngIf="loading"></app-loading>
+<app-error *ngIf="error"></app-error>
+
+<div *ngIf="dinoList">
+  <app-dino *ngFor="let dino of dinoList" [dino]="dino"></app-dino>
+</div>

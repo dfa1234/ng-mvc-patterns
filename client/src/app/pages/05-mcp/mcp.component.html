@@ -1,0 +1,53 @@
+<h1 class="text-center">Multiple Content Projection</h1>
+<p class="text-center lead">
+  Supporting more dynamic, flexible templates with multiple Content Projection
+</p>
+
+<ng-template #noDinos>
+  <app-error *ngIf="error"></app-error>
+  <app-loading *ngIf="loading"></app-loading>
+</ng-template>
+
+<!-- Featured dinosaur (not from API) -->
+<h2 class="text-center">Featured</h2>
+<app-dino-content [dino]="featuredDino">
+  <a
+    href="https://www.thoughtco.com/dinosaurs-and-prehistoric-animals-of-colorado-1092063"
+    target="_blank"
+    #dinoLink>{{ featuredDino.name }}</a>
+  <span class="icon" #dinoIcon>
+    🌿
+  </span>
+  <p appHighlight>
+    Stegosaurus was well-armed, with fearsome-looking triangular plates and a spiked "thagomizer" on the end of its tail.
+  </p>
+</app-dino-content>
+
+<!-- List of dinosaurs from API -->
+<h2 class="text-center pt-2">Dinosaurs</h2>
+<ng-container *ngIf="dinoList$ | async as dinoList; else noDinos">
+  <div
+    *ngFor="let dino of dinoList"
+    id="{{ dino.name | lowercase }}"
+    #dinoElement>
+    <app-dino-content [dino]="dino">
+      <b>CONTENT A</b>
+      <a
+        routerLink="/mcp"
+        fragment="{{ dino.name | lowercase }}">{{ dino.name }}</a>
+      <b>CONTENT .ICON</b>
+      <span
+        class="icon"
+        *ngIf="dino.name === 'Parasaurolophus'"
+        #dinoIcon>
+        🌟
+      </span>
+      <b>APPHIGHLIGHT</b>
+      <p
+        appHighlight
+        *ngIf="dino.name === 'Giganotosaurus'">
+        GigaNOTosaurus (a theropod) should not be confused with GigANTosaurus (a sauropod).
+      </p>
+    </app-dino-content>
+  </div>
+</ng-container>

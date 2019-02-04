@@ -1,0 +1,47 @@
+<h1 class="text-center">OnPush Change Detection</h1>
+<p class="text-center lead">
+  Demonstrating OnPush change detection in a child component
+</p>
+
+<ng-template #noDino>
+  <app-loading *ngIf="loading"></app-loading>
+  <app-error *ngIf="error"></app-error>
+</ng-template>
+
+<ng-container *ngIf="dino$ | async; else noDino">
+  <!-- Form to update dino's name and info -->
+  <form (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="info">Name:</label>
+      <input
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="formData.name">
+    </div>
+    <div class="form-group">
+      <label for="info">Info:</label>
+      <input
+        class="form-control"
+        id="info"
+        name="info"
+        [(ngModel)]="formData.info">
+    </div>
+    <button class="btn btn-success">Update Info</button>
+  </form>
+
+  <!-- Dino object -->
+  <div class="my-3">
+    <strong><code>this.dino</code></strong>
+    <pre>{{ dino | json }}</pre>
+  </div>
+
+  <!-- Dino child component -->
+  <app-dino-content-onpush [dino]="dino">
+    <a
+      href="https://www.thoughtco.com/things-to-know-giganotosaurus-1093787"
+      target="_blank">
+      {{ dino.name }}
+    </a>
+  </app-dino-content-onpush>
+</ng-container>

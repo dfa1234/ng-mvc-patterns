@@ -1,0 +1,11 @@
+node_modules
+*.log
+*.txt
+*.out
+.DS_Store
+.idea/
+logs/
+tls/*.pem
+dumps/
+cache/
+backups/

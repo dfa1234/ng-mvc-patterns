@@ -1,0 +1,23 @@
+<h1 class="text-center">Fixing Stuff</h1>
+<p class="text-center lead">
+  Fixing broken page load target links with AfterViewInit, ViewChildren, and ElementRef
+</p>
+
+<ng-template #noDinos>
+  <app-loading *ngIf="loading"></app-loading>
+  <app-error *ngIf="error"></app-error>
+</ng-template>
+
+<ng-container *ngIf="dinoList$ | async as dinoList; else noDinos">
+  <div
+    *ngFor="let dino of dinoList"
+    id="{{ dino.name | lowercase }}"
+    class="py-4 my-4"
+    #dinoElement>
+    <a
+      routerLink="/afterviewinit"
+      fragment="{{ dino.name | lowercase }}">
+      <h3>{{ dino.name }}</h3>
+    </a>
+  </div>
+</ng-container>
