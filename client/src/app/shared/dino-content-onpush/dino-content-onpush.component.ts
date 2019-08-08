@@ -20,6 +20,9 @@ export class DinoContentOnpushComponent implements OnChanges, OnInit {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
+
+    console.warn(changes)
+
     for (const propName in changes) {
       if (propName === 'dino') {
         const change = changes[propName];

@@ -1,8 +1,6 @@
-import {AfterViewInit, Component} from '@angular/core';
 import {ProductComponentModel} from './product.component.model';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
-import { ApplicationStateService } from '../application-state.service';
 
 
 export abstract class ProductComponent {

@@ -31,18 +31,18 @@
     id="{{ dino.name | lowercase }}"
     #dinoElement>
     <app-dino-content [dino]="dino">
-      <b>CONTENT A</b>
+      <b>INJECTING CONTENT A</b>
       <a
         routerLink="/mcp"
-        fragment="{{ dino.name | lowercase }}">{{ dino.name }}</a>
-      <b>CONTENT .ICON</b>
+        fragment="{{ dino.name | lowercase }}"><b>{{ dino.name }}</b></a>
+      <b>INJECTING CONTENT .ICON</b>
       <span
         class="icon"
         *ngIf="dino.name === 'Parasaurolophus'"
         #dinoIcon>
-        🌟
+        <b>🌟</b>
       </span>
-      <b>APPHIGHLIGHT</b>
+      <b>INJECTING APPHIGHLIGHT</b>
       <p
         appHighlight
         *ngIf="dino.name === 'Giganotosaurus'">
